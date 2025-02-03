@@ -16,10 +16,10 @@ def generate_image(seed, width, height, mean, std):
     Returns:
         image (numpy.ndarray): The generated image.
     """
-    ### START CODE HERE ###
-    ### TODO
-    ### END CODE HERE ###
-
+    np.random.seed(seed)
+    image = np.random.normal(loc=mean, scale=std, size=(height, width))
+    image = np.clip(image, 0, 255).astype(np.uint8)
+    
     return image
 
 def main():
@@ -37,6 +37,7 @@ def main():
 
     # Generate the image
     image = generate_image(args.registration_number, args.width, args.height, args.mean, args.std)
+
 
     # Save the generated image
     cv2.imwrite(args.output, image)
