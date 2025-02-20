@@ -1,5 +1,5 @@
 import numpy as np
-
+import cv2 as cv
 def get_image_info(image):
     """
     Extracts metadata and statistical information from an image.
@@ -12,7 +12,14 @@ def get_image_info(image):
     """
     
     ### START CODE HERE ###
-    ### TODO
+    # Get the image dimensions
+    height, width = image.shape[:2]
+    dtype = image.dtype
+    depth = image.ndim 
+    min_val = np.min(image)
+    max_val = np.max(image)
+    mean_val = np.mean(image)
+    std_val = np.std(image)
     ### END CODE HERE ###
 
     return {

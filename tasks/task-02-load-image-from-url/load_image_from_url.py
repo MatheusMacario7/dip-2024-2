@@ -1,6 +1,7 @@
 import argparse
 import numpy as np
 import cv2 as cv
+import requests 
 
 def load_image_from_url(url, **kwargs):
     """
@@ -15,9 +16,16 @@ def load_image_from_url(url, **kwargs):
     """
     
     ### START CODE HERE ###
-    ### TODO
+    response = requests.get(url, stream=True)
+    if response.status_code == 200:
+        image_array = np.asarray(bytearray(response.content), dtype=np.uint8)
+        image = cv.imdecode(image_array, **kwargs)
+        return image
+    else:
+        raise ValueError("Failed to download image from URL")
     ### END CODE HERE ###
     
     return image
+
 
 load_image_from_url()
