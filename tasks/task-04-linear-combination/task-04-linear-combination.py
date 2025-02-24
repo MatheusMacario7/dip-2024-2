@@ -19,11 +19,9 @@ def linear_combination(i1: np.ndarray, i2: np.ndarray, a1: float, a2: float) -> 
     if i1.shape != i2.shape:
         raise ValueError("Input images must have the same dimensions.")
 
-    ### START CODE HERE ###
-    ### TODO
-    ### END CODE HERE ###
-
-    return None
+    # Compute the linear combination using OpenCV's addWeighted function
+    result = cv2.addWeighted(i1, a1, i2, a2, 0)
+    return result
 
 # Example Usage
 if __name__ == "__main__":
